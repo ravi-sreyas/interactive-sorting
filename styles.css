@@ -2,7 +2,11 @@
 body {
     margin: 0px;
     font-family: "Lato", sans-serif;
+    overflow-y: scroll;
 }
+/* overflow-y: scroll; makes the scroll-bar ALWAYS visible
+   Done to avoid the JUMP when switching tabs between Home & About*/
+
 
 .container {
     display: grid;
@@ -13,8 +17,8 @@ body {
 .container {
     position: sticky;
     top: 0%;
-    background-color: whitesmoke;
-    z-index: 100;
+    background-color: white;
+    z-index: 1;
 }
 
 /* Nav bar styles*/
@@ -55,6 +59,40 @@ body {
 
 .active-nav-link {
     border-bottom: 1px solid black;
+}
+
+/* Search bar styles */
+.middle-search-bar-wrapper {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 2px #ccc;
+}
+
+/* Adding z-index makes this transparent border to NOT interfere
+   with .middle-search-bar-wrapper & make the edges transparent BUT
+   will not be able to select the input field & type.
+   So leaving the border to interfere with parent border
+   (looks good though) */
+#middle-search-bar-text {
+    width: 100%;
+    padding: 4px 4px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    font-style: italic;
+    font-family: "Lato", sans-serif;
+}
+
+/* To hide the blue border which comes up on clicking text input */
+#middle-search-bar-text:focus {
+    outline-width: 0px;
+}
+
+.search-icon-image img {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2px;
 }
 
 /*
@@ -125,8 +163,6 @@ body {
 (2) .wallpaper-item-wrapper:hover - Hovering works perfectly but it darkens the subtitle & logo.
 That's why going for JS
 */
-
-
 
 /* About page styles */
 
