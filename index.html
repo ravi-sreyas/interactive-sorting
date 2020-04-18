@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Home</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav-bar-wrapper">
+                <div class="left-side">
+                    <div class="nav-bar-link-wrapper active-nav-link">
+                        <a href="index.html">HOME</a>
+                    </div>
+
+                    <div class="nav-bar-link-wrapper">
+                        <a href="about.html">ABOUT</a>
+                    </div>
+                </div>
+
+                <div class="right-side">
+                    <div class="nav-bar-text">RAVI SREYAS S</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="wallpaper-items-wrapper">
+
+                <div class="wallpaper-item-wrapper">
+                    <div class="wallpaper-img-background" style="background-image: url(images/nature-two-trees.jpg);"></div>
+                    <div class="wallpaper-img-text-wrapper">
+                        <div class="subtitle">
+                            Beautiful Nature
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallpaper-item-wrapper">
+                    <div class="wallpaper-img-background" style="background-image: url(images/nature-lava.jpg);"></div>
+                    <div class="wallpaper-img-text-wrapper">
+                        <div class="subtitle">
+                            Beautiful Lava
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallpaper-item-wrapper">
+                    <div class="wallpaper-img-background" style="background-image: url(images/nature-hill-river.jpg);"></div>
+                    <div class="wallpaper-img-text-wrapper">
+                        <div class="subtitle">
+                            Beautiful river between hills
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallpaper-item-wrapper">
+                    <div class="wallpaper-img-background" style="background-image: url(images/nature-hill-night-sky.jpg);"></div>
+                    <div class="wallpaper-img-text-wrapper">
+                        <div class="subtitle">
+                            Beautiful hill in the night sky
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallpaper-item-wrapper">
+                    <div class="wallpaper-img-background" style="background-image: url(images/nature-snowflake.jpg);"></div>
+                    <div class="wallpaper-img-text-wrapper">
+                        <div class="subtitle">
+                            Beautiful Snowflake
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallpaper-item-wrapper">
+                    <div class="wallpaper-img-background" style="background-image: url(images/nature-waterfall.jpg);"></div>
+                    <div class="wallpaper-img-text-wrapper">
+                        <div class="logo-wrapper">
+                            <!-- Sample image for trial ONLY -->
+                            <img src="images/logos/nature-droplet.jpg" alt="">
+                        </div>
+                        <div class="subtitle">
+                            Beautiful Natural Waterfall
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const wallpaperItems = document.querySelectorAll('.wallpaper-item-wrapper')
+
+        wallpaperItems.forEach(wallpaperItem => {
+            wallpaperItem.addEventListener('mouseover', () => {
+                wallpaperItem.childNodes[1].classList.add('img-darken');
+            })
+            wallpaperItem.addEventListener('mouseout', () => {
+                wallpaperItem.childNodes[1].classList.remove('img-darken');
+            })
+        })
+    </script>
+</html>

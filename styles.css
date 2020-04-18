@@ -1,0 +1,148 @@
+/* Master styles */
+body {
+    margin: 0px;
+    font-family: "Lato", sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* To make the top-nav always stick to the top & be visible even on scrolling down */
+.container {
+    position: sticky;
+    top: 0%;
+    background-color: whitesmoke;
+    z-index: 100;
+}
+
+/* Nav bar styles*/
+.nav-bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 28px;
+}
+
+.left-side {
+    display: flex;
+}
+
+.left-side > div {
+    margin-right: 20px;
+    font-size: 0.9em;
+}
+
+.nav-bar-link-wrapper {
+    height: 22px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.nav-bar-link-wrapper a {
+    color: #8a8a8a;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.nav-bar-link-wrapper:hover {
+    border-bottom: 1px solid black;
+}
+
+.nav-bar-link-wrapper a:hover {
+    color: black;
+}
+
+.active-nav-link {
+    border-bottom: 1px solid black;
+}
+
+/*
+!important - To override default behaviour
+.active-nav-link - Takes care of holding the BORDER BOTTOM VALUE
+.active-nav-link a - Takes care of holding the TEXT VALUE
+*/
+.active-nav-link a {
+    color: black !important;
+}
+
+/* Wallpaper styles */
+
+.wallpaper-items-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wallpaper-item-wrapper {
+    position: relative
+}
+
+.wallpaper-img-background {
+    height: 500px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wallpaper-img-text-wrapper {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.logo-wrapper img {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.wallpaper-img-text-wrapper .subtitle {
+    transition: 1s;
+    font-weight: 600;
+    color: transparent;
+}
+
+.wallpaper-img-text-wrapper:hover .subtitle {
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+.img-darken {
+    transition: 1s;
+    filter: brightness(10%);
+}
+
+/* Tried out adding using :hover
+(1) .wallpaper-img-background:hover - On hovering gradually to the wallpaper, it darkens but on further movement,
+                                      it brightens back.
+(2) .wallpaper-item-wrapper:hover - Hovering works perfectly but it darkens the subtitle & logo.
+That's why going for JS
+*/
+
+
+
+/* About page styles */
+
+.two-column-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profile-image-wrapper {
+    width: 100%;
+}
+
+.profile-content-wrapper {
+    padding: 20px;
+}
+
+.profile-content-wrapper h2 {
+    color: lightskyblue
+}
