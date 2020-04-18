@@ -1,0 +1,35 @@
+.user-input-wrapper {
+    display: flex;
+}
+
+#numberOfElements {
+    width: 250px;
+}
+
+.generated-random-number-array-wrapper > div {
+    display: flex;
+}
+
+#chart {
+    display: grid;
+    margin: 10px;
+    grid-template-columns: repeat(100, 1fr);
+    grid-template-rows: repeat(100, 1fr);
+    column-gap: 5px;
+    height: 50vh;
+    width: 50vh;
+}
+
+[class*="bar"] {
+    grid-row-start: 1;
+    grid-row-end: 101;
+    border-radius: 8px 8px 0px 0px;
+}
+
+[class*="bar"]:nth-child(odd) {
+    background-color: #ff4136;
+  }
+
+  [class*="bar"]:nth-child(even) {
+    background-color: #0074d9;
+  }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sort page</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="sorting-styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="user-input-wrapper">
+                <input type="number" id="numberOfElements" placeholder="Enter desired number of elements" />
+                <button type="button" id="generateRandomNumberArray" onclick="generateRandomNumberArray()">Generate!</button>
+            </div>
+
+            <div class="generated-random-number-array-wrapper">
+                <div id="random-array-elements">
+
+                </div>
+            </div>
+
+            <div id="chart">
+            </div>
+
+        </div>
+    </body>
+
+    <script>
+        const totalRows = 101;
+
+        function generateRandomNumberArray() {
+            const maxValue = getRandomValue();
+            const minValue = getMinValue(maxValue);
+            const numberOfElements = document.getElementById('numberOfElements').value;
+            const barHeightMultiplier = 100/maxValue;
+            doConsoleLog(maxValue, minValue, numberOfElements, barHeightMultiplier);
+            document.getElementById('chart').setAttribute("style", "grid-template-columns:repeat("+numberOfElements+", 1fr)");
+
+
+            let elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
+            doConsoleLog(elementsToBeSorted);
+            document.getElementById('random-array-elements').innerHTML = "";
+            document.getElementById('chart').innerHTML = "";
+            elementsToBeSorted.forEach(element => document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML + "<div class='random-array-element'>--"+element+"--</div>");
+            elementsToBeSorted.forEach(element => document.getElementById('chart').innerHTML = document.getElementById('chart').innerHTML + "<div class='bar"+element+"' style='grid-row-start: "+calculateChartValue(element*barHeightMultiplier)+";'></div>");
+        }
+
+        function getRandomValue() {
+            return Math.floor(Math.random() * 100);
+        }
+
+        function getMinValue(maxValue) {
+            return Math.floor(Math.random() * maxValue);
+        }
+
+        function getRandomNumberWithin(minValue, maxValue) {
+            return Math.floor(Math.random() * (maxValue - minValue) + minValue);
+        }
+
+        function createRandomNumberArray(numberOfElements, minValue, maxValue) {
+            let arr = [minValue, maxValue];
+            for(it = 1; it <= numberOfElements; it++) {
+                arr.push(getRandomNumberWithin(minValue, maxValue));
+            }
+            return arr;
+        }
+
+        function calculateChartValue(value) {
+            return totalRows - Math.floor(value);
+        }
+
+        function doConsoleLog(...elements) {
+            elements.forEach(element => console.log("  " + element + "  "));
+        }
+    </script>
+</html>
