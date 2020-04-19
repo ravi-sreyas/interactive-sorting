@@ -30,32 +30,29 @@
         const totalRows = 101;
 
         function generateRandomNumberArray() {
-            const maxValue = getRandomValue();
-            const minValue = getMinValue(maxValue);
+            const maxValue = generateMaxValue();
+            const minValue = generateMinValue();
             const numberOfElements = document.getElementById('numberOfElements').value;
             const barHeightMultiplier = 100/maxValue;
             doConsoleLog(maxValue, minValue, numberOfElements, barHeightMultiplier);
-            document.getElementById('chart').setAttribute("style", "grid-template-columns:repeat("+numberOfElements+", 1fr)");
-
+            addCustomColumnsForGridTemplate(numberOfElements);
 
             let elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
             doConsoleLog(elementsToBeSorted);
-            document.getElementById('random-array-elements').innerHTML = "";
-            document.getElementById('chart').innerHTML = "";
-            elementsToBeSorted.forEach(element => document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML + "<div class='random-array-element'>--"+element+"--</div>");
-            elementsToBeSorted.forEach(element => document.getElementById('chart').innerHTML = document.getElementById('chart').innerHTML + "<div class='bar"+element+"' style='grid-row-start: "+calculateChartValue(element*barHeightMultiplier)+";'></div>");
+            addHTMLElementsForDisplayingNumbers(elementsToBeSorted);
+            addHTMLElementsForDisplayingChart(elementsToBeSorted, barHeightMultiplier);
         }
 
-        function getRandomValue() {
-            return Math.floor(Math.random() * 100);
+        function generateMaxValue() {
+            return getRandomNumberWithin(50, 100);
         }
 
-        function getMinValue(maxValue) {
-            return Math.floor(Math.random() * maxValue);
+        function generateMinValue() {
+            return getRandomNumberWithin(0, 49);
         }
 
-        function getRandomNumberWithin(minValue, maxValue) {
-            return Math.floor(Math.random() * (maxValue - minValue) + minValue);
+        function addCustomColumnsForGridTemplate(numberOfElements) {
+            document.getElementById('chart').setAttribute("style", "grid-template-columns:repeat(" + numberOfElements + ", 1fr)");
         }
 
         function createRandomNumberArray(numberOfElements, minValue, maxValue) {
@@ -64,6 +61,23 @@
                 arr.push(getRandomNumberWithin(minValue, maxValue));
             }
             return arr;
+        }
+
+        function getRandomNumberWithin(minValue, maxValue) {
+            return Math.floor(Math.random() * (maxValue - minValue) + minValue);
+        }
+
+        function addHTMLElementsForDisplayingNumbers(elements) {
+            document.getElementById('random-array-elements').innerHTML = "";
+            elements.forEach(element => document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML +
+            "<div class='random-array-element'>--" + element + "--</div>");
+        }
+
+        function addHTMLElementsForDisplayingChart(elements, barHeightMultiplier) {
+            document.getElementById('chart').innerHTML = "";
+            elements.forEach(element => document.getElementById('chart').innerHTML = document.getElementById('chart').innerHTML +
+            "<div class='bar" + element + "' " +
+            "style='grid-row-start: " + calculateChartValue(element*barHeightMultiplier) + ";'></div>");
         }
 
         function calculateChartValue(value) {
