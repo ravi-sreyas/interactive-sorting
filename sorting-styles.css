@@ -6,8 +6,20 @@
     width: 250px;
 }
 
+.generated-random-number-array-wrapper {
+    margin: 20px;
+}
+
 .generated-random-number-array-wrapper > div {
     display: flex;
+}
+
+.sort-button-wrapper {
+    margin: 10px;
+}
+
+#doSortButton {
+    display: none;
 }
 
 #chart {
@@ -16,8 +28,8 @@
     grid-template-columns: repeat(100, 1fr);
     grid-template-rows: repeat(100, 1fr);
     column-gap: 5px;
-    height: 50vh;
-    width: 50vh;
+    height: 70vh;
+    width: 70vh;
 }
 
 [class*="bar"] {
@@ -28,8 +40,13 @@
 
 [class*="bar"]:nth-child(odd) {
     background-color: #ff4136;
-  }
+}
 
-  [class*="bar"]:nth-child(even) {
+[class*="bar"]:nth-child(even) {
     background-color: #0074d9;
-  }
+}
+
+.element-on-chart {
+    display: flex;
+    justify-content: center;
+}

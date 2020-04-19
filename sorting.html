@@ -9,38 +9,47 @@
     </head>
     <body>
         <div class="container">
-            <div class="user-input-wrapper">
-                <input type="number" id="numberOfElements" placeholder="Enter desired number of elements" />
-                <button type="button" id="generateRandomNumberArray" onclick="generateRandomNumberArray()">Generate!</button>
-            </div>
-
-            <div class="generated-random-number-array-wrapper">
-                <div id="random-array-elements">
-
+                <div class="user-input-wrapper">
+                    <div class="input-text-wrapper">
+                        <input type="number" id="numberOfElements" placeholder="Enter desired number of elements" />
+                    </div>
+                    <div class="submit-button-wrapper">
+                        <button type="button" id="generateRandomNumberArray" onclick="generateRandomNumberArray()">Generate!</button>
+                    </div>
                 </div>
-            </div>
 
-            <div id="chart">
-            </div>
+                <div class="generated-random-number-array-wrapper">
+                    <div id="random-array-elements">
 
+                    </div>
+                    <div class="sort-button-wrapper">
+                        <button type="button" id="doSortButton" onclick="doSort()">Sort me!</button>
+                    </div>
+                </div>
+
+                <div id="chart">
+                </div>
         </div>
     </body>
 
     <script>
         const totalRows = 101;
+        let barHeightMultiplier = 1;
+        let elementsToBeSorted;
 
         function generateRandomNumberArray() {
             const maxValue = generateMaxValue();
             const minValue = generateMinValue();
             const numberOfElements = document.getElementById('numberOfElements').value;
-            const barHeightMultiplier = 100/maxValue;
+            barHeightMultiplier = 100/maxValue;
             doConsoleLog(maxValue, minValue, numberOfElements, barHeightMultiplier);
             addCustomColumnsForGridTemplate(numberOfElements);
 
-            let elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
+            elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
             doConsoleLog(elementsToBeSorted);
             addHTMLElementsForDisplayingNumbers(elementsToBeSorted);
-            addHTMLElementsForDisplayingChart(elementsToBeSorted, barHeightMultiplier);
+            addHTMLElementsForDisplayingChart(elementsToBeSorted);
+            displayDoSortButton();
         }
 
         function generateMaxValue() {
@@ -68,16 +77,18 @@
         }
 
         function addHTMLElementsForDisplayingNumbers(elements) {
-            document.getElementById('random-array-elements').innerHTML = "";
+            document.getElementById('random-array-elements').innerHTML = "[";
             elements.forEach(element => document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML +
-            "<div class='random-array-element'>--" + element + "--</div>");
+            "<div class='random-array-element'>&nbsp&nbsp" + element + "&nbsp&nbsp</div>");
+            document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML + "]";
         }
 
-        function addHTMLElementsForDisplayingChart(elements, barHeightMultiplier) {
+        function addHTMLElementsForDisplayingChart(elements) {
             document.getElementById('chart').innerHTML = "";
             elements.forEach(element => document.getElementById('chart').innerHTML = document.getElementById('chart').innerHTML +
             "<div class='bar" + element + "' " +
-            "style='grid-row-start: " + calculateChartValue(element*barHeightMultiplier) + ";'></div>");
+            "style='grid-row-start: " + calculateChartValue(element*barHeightMultiplier) + ";'>" +
+            "<div class='element-on-chart'>" + element + "</div>" + "</div>");
         }
 
         function calculateChartValue(value) {
@@ -86,6 +97,31 @@
 
         function doConsoleLog(...elements) {
             elements.forEach(element => console.log("  " + element + "  "));
+        }
+
+        function displayDoSortButton() {
+            document.getElementById('doSortButton').setAttribute("style", "display: flex");
+        }
+
+        function doSort() {
+            if(bubbleSort()) {
+                setTimeout(() => doSort(), 200);
+            }
+        }
+
+        function bubbleSort() {
+            var elementsArraySize = elementsToBeSorted.length-1;
+            for (var i = 0; i < elementsArraySize; i++) {
+                if (elementsToBeSorted[i] < elementsToBeSorted[i+1]) {
+                var temp = elementsToBeSorted[i];
+                elementsToBeSorted[i] = elementsToBeSorted[i+1];
+                elementsToBeSorted[i+1] = temp;
+                addHTMLElementsForDisplayingNumbers(elementsToBeSorted);
+                addHTMLElementsForDisplayingChart(elementsToBeSorted);
+                return true;
+                }
+            }
+            return false;
         }
     </script>
 </html>
