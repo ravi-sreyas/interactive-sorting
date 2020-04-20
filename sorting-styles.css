@@ -22,6 +22,10 @@
     display: none;
 }
 
+.big-o-text-wrapper {
+    display: none;
+}
+
 #chart {
     display: grid;
     margin: 10px;

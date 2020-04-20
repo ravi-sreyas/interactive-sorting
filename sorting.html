@@ -25,6 +25,11 @@
                     <div class="sort-button-wrapper">
                         <button type="button" id="doSortButton" onclick="doSort()">Sort me!</button>
                     </div>
+                    <div id="big-o-text-wrapper">
+                        <div id="big-o-complexity-text"></div>
+                        <div id="big-o-expected-value-text"></div>
+                        <div id="steps-taken-text"></div>
+                    </div>
                 </div>
 
                 <div id="chart">
@@ -32,96 +37,23 @@
         </div>
     </body>
 
+    <script src="randomNumberArrayGenerator.js"></script>
+    <script src="displayHelpers.js"></script>
+    <script src="sortingAlgorithms/helper/helper.js"></script>
+    <script src="sortingAlgorithms/bubbleSort.js"></script>
+    <script src="sortingAlgorithms/quickSort.js"></script>
     <script>
-        const totalRows = 101;
-        let barHeightMultiplier = 1;
-        let elementsToBeSorted;
-
-        function generateRandomNumberArray() {
-            const maxValue = generateMaxValue();
-            const minValue = generateMinValue();
-            const numberOfElements = document.getElementById('numberOfElements').value;
-            barHeightMultiplier = 100/maxValue;
-            doConsoleLog(maxValue, minValue, numberOfElements, barHeightMultiplier);
-            addCustomColumnsForGridTemplate(numberOfElements);
-
-            elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
-            doConsoleLog(elementsToBeSorted);
-            addHTMLElementsForDisplayingNumbers(elementsToBeSorted);
-            addHTMLElementsForDisplayingChart(elementsToBeSorted);
-            displayDoSortButton();
-        }
-
-        function generateMaxValue() {
-            return getRandomNumberWithin(50, 100);
-        }
-
-        function generateMinValue() {
-            return getRandomNumberWithin(0, 49);
-        }
-
-        function addCustomColumnsForGridTemplate(numberOfElements) {
-            document.getElementById('chart').setAttribute("style", "grid-template-columns:repeat(" + numberOfElements + ", 1fr)");
-        }
-
-        function createRandomNumberArray(numberOfElements, minValue, maxValue) {
-            let arr = [minValue, maxValue];
-            for(it = 1; it <= numberOfElements; it++) {
-                arr.push(getRandomNumberWithin(minValue, maxValue));
-            }
-            return arr;
-        }
-
-        function getRandomNumberWithin(minValue, maxValue) {
-            return Math.floor(Math.random() * (maxValue - minValue) + minValue);
-        }
-
-        function addHTMLElementsForDisplayingNumbers(elements) {
-            document.getElementById('random-array-elements').innerHTML = "[";
-            elements.forEach(element => document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML +
-            "<div class='random-array-element'>&nbsp&nbsp" + element + "&nbsp&nbsp</div>");
-            document.getElementById('random-array-elements').innerHTML = document.getElementById('random-array-elements').innerHTML + "]";
-        }
-
-        function addHTMLElementsForDisplayingChart(elements) {
-            document.getElementById('chart').innerHTML = "";
-            elements.forEach(element => document.getElementById('chart').innerHTML = document.getElementById('chart').innerHTML +
-            "<div class='bar" + element + "' " +
-            "style='grid-row-start: " + calculateChartValue(element*barHeightMultiplier) + ";'>" +
-            "<div class='element-on-chart'>" + element + "</div>" + "</div>");
-        }
-
-        function calculateChartValue(value) {
-            return totalRows - Math.floor(value);
-        }
-
-        function doConsoleLog(...elements) {
-            elements.forEach(element => console.log("  " + element + "  "));
-        }
-
-        function displayDoSortButton() {
-            document.getElementById('doSortButton').setAttribute("style", "display: flex");
-        }
-
         function doSort() {
-            if(bubbleSort()) {
-                setTimeout(() => doSort(), 200);
-            }
-        }
-
-        function bubbleSort() {
-            var elementsArraySize = elementsToBeSorted.length-1;
-            for (var i = 0; i < elementsArraySize; i++) {
-                if (elementsToBeSorted[i] < elementsToBeSorted[i+1]) {
-                var temp = elementsToBeSorted[i];
-                elementsToBeSorted[i] = elementsToBeSorted[i+1];
-                elementsToBeSorted[i+1] = temp;
-                addHTMLElementsForDisplayingNumbers(elementsToBeSorted);
-                addHTMLElementsForDisplayingChart(elementsToBeSorted);
-                return true;
-                }
-            }
-            return false;
+            // if(bubbleSortSingleIteration(elementsToBeSorted)) {
+            //     setTimeout(() => doSort(), 200);
+            // }
+            var arrayOfArrays = quickSortInitiate(elementsToBeSorted, 0, elementsToBeSorted.length - 1);
+            arrayOfArrays.forEach(element => {
+                doConsoleLog(element);
+            });
+            doConsoleLog(arrayOfArrays.length);
+            updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
+            printBigONotation("Nlog(N)", arrayOfArrays.length, elementsToBeSorted.length);
         }
     </script>
 </html>
