@@ -1,6 +1,16 @@
 var arrayOfArrays = [];
 var ai = 0;
 
+function startQuickSort() {
+    var arrayOfArrays = quickSortInitiate(elementsToBeSorted, 0, elementsToBeSorted.length - 1);
+    arrayOfArrays.forEach(element => {
+        doConsoleLog(element);
+    });
+    doConsoleLog(arrayOfArrays.length);
+    updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
+    printBigONotation("Nlog(N)", arrayOfArrays.length, elementsToBeSorted.length);
+}
+
 function partition(elementsToBeSorted, leftIndex, rightIndex) {
     var pivot   = elementsToBeSorted[Math.floor((rightIndex + leftIndex) / 2)],
         i = leftIndex,

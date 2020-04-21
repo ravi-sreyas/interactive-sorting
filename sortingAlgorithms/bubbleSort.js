@@ -1,3 +1,9 @@
+function startBubbleSort() {
+    if(bubbleSortSingleIteration(elementsToBeSorted)) {
+        setTimeout(() => doSort(), 200);
+    }
+}
+
 function bubbleSortSingleIteration(elementsToBeSorted) {
     var elementsArraySize = elementsToBeSorted.length-1;
     for (var i = 0; i < elementsArraySize; i++) {

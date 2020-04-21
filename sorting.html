@@ -44,16 +44,8 @@
     <script src="sortingAlgorithms/quickSort.js"></script>
     <script>
         function doSort() {
-            // if(bubbleSortSingleIteration(elementsToBeSorted)) {
-            //     setTimeout(() => doSort(), 200);
-            // }
-            var arrayOfArrays = quickSortInitiate(elementsToBeSorted, 0, elementsToBeSorted.length - 1);
-            arrayOfArrays.forEach(element => {
-                doConsoleLog(element);
-            });
-            doConsoleLog(arrayOfArrays.length);
-            updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
-            printBigONotation("Nlog(N)", arrayOfArrays.length, elementsToBeSorted.length);
+            // startBubbleSort();
+            // startQuickSort();
         }
     </script>
 </html>
