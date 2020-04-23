@@ -34,8 +34,18 @@ function addHTMLElementsForDisplayingChart(elements) {
     "<div class='element-on-chart'>" + element + "</div>" + "</div>");
 }
 
+function displaySortingRelatedElements() {
+    displayDoSortButton();
+    displaySortAlgorithmDropDown();
+}
+
 function displayDoSortButton() {
     document.getElementById('doSortButton').setAttribute("style", "display: flex");
+}
+
+function displaySortAlgorithmDropDown() {
+    document.getElementById('sortAlgorithmText').setAttribute("style", "display: flex");
+    document.getElementById('sortAlgorithmDropDown').setAttribute("style", "display: flex");
 }
 
 function addCustomColumnsForGridTemplate(numberOfElements) {

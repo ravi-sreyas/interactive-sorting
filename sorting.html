@@ -24,6 +24,16 @@
                     </div>
                     <div class="sort-button-wrapper">
                         <button type="button" id="doSortButton" onclick="doSort()">Sort me!</button>
+
+                        <div class="sort-type-wrapper">
+                            <label id="sortAlgorithmText" for="sortAlgorithm">Algorithm :</label>
+
+                            <select id="sortAlgorithmDropDown">
+                                <option value="bubbleSort">Bubble Sort</option>
+                                <option value="quickSort">Quick Sort</option>
+                                <option value="mergeSort">Merge Sort</option>
+                            </select>
+                        </div>
                     </div>
                     <div id="big-o-text-wrapper">
                         <div id="big-o-complexity-text"></div>
@@ -45,6 +55,14 @@
     <script src="sortingAlgorithms/mergeSort.js"></script>
     <script>
         function doSort() {
+            switch(document.getElementById('sortAlgorithmDropDown').value) {
+                case 'bubbleSort': startBubbleSort();
+                                    break;
+                case 'quickSort': startQuickSort();
+                                    break;
+                case 'mergeSort': startMergeSort();
+                                    break;
+            }
             // startBubbleSort();
             // startQuickSort();
             // startMergeSort();
