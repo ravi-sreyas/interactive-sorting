@@ -1,5 +1,4 @@
 function startBubbleSort() {
-    resetGlobalVariables();
     bubbleSort(elementsToBeSorted);
     updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
     printBigONotation("N^2", globalCounter, elementsToBeSorted.length * elementsToBeSorted.length);

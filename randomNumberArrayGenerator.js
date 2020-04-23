@@ -10,6 +10,7 @@ function generateRandomNumberArray() {
 
     elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
     doConsoleLog(elementsToBeSorted);
+    cleanUpScreen();
     updateHTMLElements(elementsToBeSorted);
     displaySortingRelatedElements();
 }

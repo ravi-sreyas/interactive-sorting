@@ -83,3 +83,11 @@ function displayExpectedBigOValue(expectedValue) {
 function displayStepsTaken(stepsTaken) {
     document.getElementById('steps-taken-text').innerHTML = "Obtained value <i>(Steps Taken)</i> : " + stepsTaken;
 }
+
+function hideBigONotation() {
+    hideBigOWrapper();
+}
+
+function hideBigOWrapper() {
+    document.getElementById('big-o-text-wrapper').setAttribute("style", "display: none");
+}

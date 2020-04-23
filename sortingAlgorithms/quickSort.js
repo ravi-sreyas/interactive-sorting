@@ -1,5 +1,4 @@
 function startQuickSort() {
-    resetGlobalVariables();
     quickSort(elementsToBeSorted, 0, elementsToBeSorted.length - 1);
     updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
     printBigONotation("Nlog(N)", arrayOfArrays.length, elementsToBeSorted.length * Math.log10(elementsToBeSorted.length));
