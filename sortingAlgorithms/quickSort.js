@@ -1,14 +1,8 @@
-var arrayOfArrays = [];
-var ai = 0;
-
 function startQuickSort() {
-    var arrayOfArrays = quickSortInitiate(elementsToBeSorted, 0, elementsToBeSorted.length - 1);
-    arrayOfArrays.forEach(element => {
-        doConsoleLog(element);
-    });
-    doConsoleLog(arrayOfArrays.length);
+    resetGlobalVariables();
+    quickSort(elementsToBeSorted, 0, elementsToBeSorted.length - 1);
     updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
-    printBigONotation("Nlog(N)", arrayOfArrays.length, elementsToBeSorted.length);
+    printBigONotation("Nlog(N)", arrayOfArrays.length, elementsToBeSorted.length * Math.log10(elementsToBeSorted.length));
 }
 
 function partition(elementsToBeSorted, leftIndex, rightIndex) {
@@ -19,11 +13,10 @@ function partition(elementsToBeSorted, leftIndex, rightIndex) {
             while (elementsToBeSorted[i] < pivot) {
                 i++;
             }
-            console.log("i : " + i + " " + elementsToBeSorted[i]);
             while (elementsToBeSorted[j] > pivot) {
                 j--;
             }
-            console.log("j : " + j + " " + elementsToBeSorted[j]);
+
             if (i <= j) {
                 swapElements(elementsToBeSorted, i, j);
                 arrayOfArrays[ai++] = JSON.parse(JSON.stringify(elementsToBeSorted));
@@ -45,11 +38,4 @@ function quickSort(elementsToBeSorted, leftIndex, rightIndex) {
             quickSort(elementsToBeSorted, index, rightIndex);
         }
     }
-}
-
-function quickSortInitiate(elementsToBeSorted, leftIndex, rightIndex) {
-    arrayOfArrays = [];
-    ai = 0;
-    quickSort(elementsToBeSorted, leftIndex, rightIndex);
-    return arrayOfArrays;
 }

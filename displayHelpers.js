@@ -50,10 +50,10 @@ function updatePivotElementValue(value) {
     document.getElementById('pivot-element-wrapper').innerHTML = value;
 }
 
-function printBigONotation(bigO, stepsTaken, numberOfElements) {
+function printBigONotation(bigO, stepsTaken, expectedValue) {
     displayBigOWrapper();
     displayBigOComplexity(bigO);
-    displayExpectedBigOValue(numberOfElements);
+    displayExpectedBigOValue(expectedValue);
     displayStepsTaken(stepsTaken);
 }
 
@@ -66,8 +66,8 @@ function displayBigOComplexity(bigOCompexity) {
     "<br><i>(N is the input array size)</i></br>";
 }
 
-function displayExpectedBigOValue(numberOfElements) {
-    document.getElementById('big-o-expected-value-text').innerHTML = "Expected value <i>(Best Time complexity)</i> : " + numberOfElements * Math.log10(numberOfElements);
+function displayExpectedBigOValue(expectedValue) {
+    document.getElementById('big-o-expected-value-text').innerHTML = "Expected value <i>(Average Time complexity)</i> : " + expectedValue;
 }
 
 function displayStepsTaken(stepsTaken) {

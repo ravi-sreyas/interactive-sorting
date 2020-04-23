@@ -1,17 +1,22 @@
 function startBubbleSort() {
-    if(bubbleSortSingleIteration(elementsToBeSorted)) {
-        setTimeout(() => doSort(), 200);
-    }
+    resetGlobalVariables();
+    bubbleSort(elementsToBeSorted);
+    updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
+    printBigONotation("N^2", globalCounter, elementsToBeSorted.length * elementsToBeSorted.length);
 }
 
-function bubbleSortSingleIteration(elementsToBeSorted) {
+function bubbleSort(elementsToBeSorted) {
     var elementsArraySize = elementsToBeSorted.length-1;
-    for (var i = 0; i < elementsArraySize; i++) {
-        if (elementsToBeSorted[i] < elementsToBeSorted[i+1]) {
-            elementsToBeSorted = swapElements(elementsToBeSorted, i, i+1);
-            updateHTMLElements(elementsToBeSorted);
-            return true;
+    var swapp;
+    do {
+        swapp = false;
+        for (var i = 0; i < elementsArraySize; i++) {
+            globalCounter++;
+            if (elementsToBeSorted[i] > elementsToBeSorted[i+1]) {
+                elementsToBeSorted = swapElements(elementsToBeSorted, i, i+1);
+                arrayOfArrays[ai++] = JSON.parse(JSON.stringify(elementsToBeSorted));
+                swapp = true;
+            }
         }
-    }
-    return false;
+    } while(swapp);
 }
