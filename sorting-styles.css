@@ -76,3 +76,9 @@
     display: flex;
     justify-content: center;
 }
+
+#undoSortButton {
+    display: none;
+    margin: 10px;
+    padding: 4px 4px;
+}

@@ -9,6 +9,15 @@ function generateRandomNumberArray() {
     addCustomColumnsForGridTemplate(numberOfElements);
 
     elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
+    displayOnScreen(elementsToBeSorted);
+}
+
+function undoSort() {
+    elementsToBeSorted = JSON.parse(JSON.stringify(elementsToBeSorted));
+    displayOnScreen(elementsToBeSorted);
+}
+
+function displayOnScreen(elementsToBeSorted) {
     doConsoleLog(elementsToBeSorted);
     cleanUpScreen();
     updateHTMLElements(elementsToBeSorted);

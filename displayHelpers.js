@@ -60,6 +60,10 @@ function updatePivotElementValue(value) {
     document.getElementById('pivot-element-wrapper').innerHTML = value;
 }
 
+function displayUndoSortButton() {
+    document.getElementById('undoSortButton').setAttribute("style", "display: flex");
+}
+
 function printBigONotation(bigO, stepsTaken, expectedValue) {
     displayBigOWrapper();
     displayBigOComplexity(bigO);
@@ -82,6 +86,10 @@ function displayExpectedBigOValue(expectedValue) {
 
 function displayStepsTaken(stepsTaken) {
     document.getElementById('steps-taken-text').innerHTML = "Obtained value <i>(Steps Taken)</i> : " + stepsTaken;
+}
+
+function hideUndoSortButton() {
+    document.getElementById('undoSortButton').setAttribute("style", "display: none");
 }
 
 function hideBigONotation() {

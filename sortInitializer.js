@@ -12,5 +12,6 @@ function doSort() {
 }
 
 function cleanUpScreen() {
+    hideUndoSortButton();
     hideBigONotation();
 }
