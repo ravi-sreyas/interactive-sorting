@@ -1,4 +1,4 @@
-var arrayOfArrays, ai, globalCounter;
+var arrayOfArrays, ai, globalCounter, initialArray, spaceTaken;
 
 /* To to make this function pure & avoid output arguments */
 function swapElements(elementsToBeSorted, leftIndex, rightIndex) {
@@ -12,4 +12,6 @@ function resetGlobalVariables() {
     arrayOfArrays = [];
     ai = 0;
     globalCounter = 0;
+    initialArray = JSON.parse(JSON.stringify(elementsToBeSorted));
+    spaceTaken = 0;
 }

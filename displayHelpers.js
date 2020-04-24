@@ -64,11 +64,10 @@ function displayUndoSortButton() {
     document.getElementById('undoSortButton').setAttribute("style", "display: flex");
 }
 
-function printBigONotation(bigO, stepsTaken, expectedValue) {
+function printBigONotation(bigO) {
     displayBigOWrapper();
-    displayBigOComplexity(bigO);
-    displayExpectedBigOValue(expectedValue);
-    displayStepsTaken(stepsTaken);
+    displayBigOComplexity(bigO.complexity);
+    displayBigOValues(bigO.values);
 }
 
 function displayBigOWrapper() {
@@ -76,16 +75,34 @@ function displayBigOWrapper() {
 }
 
 function displayBigOComplexity(bigOCompexity) {
-    document.getElementById('big-o-complexity-text').innerHTML = "Time Complexity (Best) : " + bigOCompexity +
-    "<br><i>(N is the input array size)</i></br>";
+    document.getElementById('big-o-complexity-text').innerHTML += "<u>Time & Space Complexity</u> <i>(N is the input array size)</i> : <br/>";
+    document.getElementById('big-o-complexity-text').innerHTML += "Time Complexity (Average) : " + bigOCompexity.time.average +
+    "<br/>";
+    document.getElementById('big-o-complexity-text').innerHTML += "Time Complexity (Worst) : " + bigOCompexity.time.worst +
+    "<br/>";
+    document.getElementById('big-o-complexity-text').innerHTML += "Space Complexity (Worst) : " + bigOCompexity.space.worst +
+    "<br/><br/>";
+}
+
+function displayBigOValues(values) {
+    displayExpectedBigOValue(values.expected);
+    displayObtainedBigOValue(values.obtained);
 }
 
 function displayExpectedBigOValue(expectedValue) {
-    document.getElementById('big-o-expected-value-text').innerHTML = "Expected value <i>(Average Time complexity)</i> : " + expectedValue;
+    document.getElementById('big-o-expected-value-text').innerHTML = "<u>Expected values</u> <i>(where c1 & c2 are constant)</i> : <br/>";
+    document.getElementById('big-o-expected-value-text').innerHTML += "Average Time complexity : <i>c1*</i>" + expectedValue.time +
+    "<br/>";
+    document.getElementById('big-o-expected-value-text').innerHTML += "Worst Space complexity : <i>c2*</i>" + expectedValue.space +
+    "<br/><br/>";
 }
 
-function displayStepsTaken(stepsTaken) {
-    document.getElementById('steps-taken-text').innerHTML = "Obtained value <i>(Steps Taken)</i> : " + stepsTaken;
+function displayObtainedBigOValue(obtainedValue) {
+    document.getElementById('steps-taken-text').innerHTML = "<u>Obtained values</u> : <br/>";
+    document.getElementById('steps-taken-text').innerHTML += "Steps taken : " + obtainedValue.time +
+    "<br/>";
+    document.getElementById('steps-taken-text').innerHTML += "Memory taken : " + obtainedValue.space +
+    "<br/><br/>";
 }
 
 function hideUndoSortButton() {
