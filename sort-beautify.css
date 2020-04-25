@@ -1,0 +1,59 @@
+/* Master styles */
+body {
+    background-color: #393939 ;
+    color: lightgoldenrodyellow;
+}
+
+.container {
+    background-color: #3f3f3f  ;
+}
+
+.user-input-wrapper {
+    justify-content: center;
+    margin: 25px;
+}
+
+.generated-random-number-array-wrapper > div {
+    justify-content: center;
+}
+
+.sort-elements-wrapper > div {
+    display: flex;
+}
+
+/* Button styles */
+#numberOfElements {
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+}
+
+#generateRandomNumberArray {
+    font-family: "Lato", sans-serif;
+}
+
+#doSortButton {
+    font-family: "Lato", sans-serif;
+}
+
+.sort-type-wrapper > select {
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+}
+
+#undoSortButton {
+    font-family: "Lato", sans-serif;
+}
+
+/* Chart styles */
+[class*="bar"]:nth-child(odd) {
+    background-color: black;
+}
+
+[class*="bar"]:nth-child(even) {
+    background-color: #ccc;
+    color: black;
+}
+
+.chart-and-notation-details-wrapper {
+    justify-self: center;
+}

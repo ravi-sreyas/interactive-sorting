@@ -6,6 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="sorting-styles.css">
+        <link rel="stylesheet" href="sort-beautify.css">
     </head>
     <body>
         <div class="container">
@@ -22,33 +23,37 @@
                     <div id="random-array-elements">
 
                     </div>
-                    <div class="sort-button-wrapper">
-                        <button type="button" id="doSortButton" onclick="doSort()">Sort me!</button>
+                    <div class="sort-elements-wrapper">
+                        <div class="sort-button-wrapper">
+                            <button type="button" id="doSortButton" onclick="doSort()">Sort me!</button>
 
-                        <div class="sort-type-wrapper">
-                            <label id="sortAlgorithmText" for="sortAlgorithm">Algorithm :</label>
+                            <div class="sort-type-wrapper">
+                                <label id="sortAlgorithmText" for="sortAlgorithm">Algorithm :</label>
 
-                            <select id="sortAlgorithmDropDown">
-                                <option value="bubbleSort">Bubble Sort</option>
-                                <option value="quickSort">Quick Sort</option>
-                                <option value="mergeSort">Merge Sort</option>
-                            </select>
-                        </div>
+                                <select id="sortAlgorithmDropDown">
+                                    <option value="bubbleSort">Bubble Sort</option>
+                                    <option value="quickSort">Quick Sort</option>
+                                    <option value="mergeSort">Merge Sort</option>
+                                </select>
+                            </div>
 
+                    </div>
                     </div>
                 </div>
 
-                <div id="chart">
-                </div>
+                <div class="chart-and-notation-details-wrapper">
+                    <div id="chart">
+                    </div>
 
-                <div class="undo-sort-button-wrapper">
-                    <button type="button" id="undoSortButton" onclick="undoSort()">Undo sort</button>
-                </div>
+                    <div class="undo-sort-button-wrapper">
+                        <button type="button" id="undoSortButton" onclick="undoSort()">Undo sort</button>
+                    </div>
 
-                <div id="big-o-text-wrapper">
-                    <div id="big-o-complexity-text"></div>
-                    <div id="big-o-expected-value-text"></div>
-                    <div id="steps-taken-text"></div>
+                    <div id="big-o-text-wrapper">
+                        <div id="big-o-complexity-text"></div>
+                        <div id="big-o-expected-value-text"></div>
+                        <div id="steps-taken-text"></div>
+                    </div>
                 </div>
         </div>
     </body>
