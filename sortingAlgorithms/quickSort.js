@@ -31,7 +31,8 @@ var quickSort = {
 }
 
 function partition(elementsToBeSorted, leftIndex, rightIndex) {
-    var pivot = elementsToBeSorted[Math.floor((rightIndex + leftIndex) / 2)],
+    var pivotIndex = Math.floor((rightIndex + leftIndex) / 2);
+    var pivot = elementsToBeSorted[pivotIndex],
         i = leftIndex,
         j = rightIndex;
     /* Quick sort's additional space is the space taken by the pivot element */
@@ -45,7 +46,9 @@ function partition(elementsToBeSorted, leftIndex, rightIndex) {
         }
 
         if (i <= j) {
+            swapHighlighter.saveSwapState([i, j, pivotIndex], JSON.parse(JSON.stringify(elementsToBeSorted)));
             swapElements(elementsToBeSorted, i, j);
+            swapHighlighter.saveSwapState([i, j, pivotIndex], JSON.parse(JSON.stringify(elementsToBeSorted)));
             arrayOfArrays[ai++] = JSON.parse(JSON.stringify(elementsToBeSorted));
             i++;
             j--;

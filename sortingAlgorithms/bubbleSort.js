@@ -8,7 +8,9 @@ var bubbleSort = {
             for (var i = 0; i < elementsArraySize; i++) {
                 globalCounter++;
                 if (elementsToBeSorted[i] > elementsToBeSorted[i + 1]) {
+                    swapHighlighter.saveSwapState([i, i + 1], JSON.parse(JSON.stringify(elementsToBeSorted)));
                     elementsToBeSorted = swapElements(elementsToBeSorted, i, i + 1);
+                    swapHighlighter.saveSwapState([i, i + 1], JSON.parse(JSON.stringify(elementsToBeSorted)));
                     arrayOfArrays[ai++] = JSON.parse(JSON.stringify(elementsToBeSorted));
                     swapp = true;
                 }

@@ -1,6 +1,7 @@
 function doSort() {
     cleanUpScreen();
     resetGlobalVariables();
+    swapHighlighter.initializeSwap();
     let sortAlgorithm = initializeSort(document.getElementById('sortAlgorithmDropDown').value);
     displaySortResults(sortAlgorithm);
 }
@@ -19,7 +20,11 @@ function initializeSort(algorithmName) {
 }
 
 function displaySortResults(sortAlgorithm) {
-    updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
+    if (sortAlgorithm === mergeSort) {
+        updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
+    } else {
+        swapHighlighter.showSwapping(arrayOfArrays, 0, arrayOfArrays.length, 0);
+    }
     displayUndoSortButton();
     printBigONotation(sortAlgorithm.createBigONotationDisplayObject());
 }
