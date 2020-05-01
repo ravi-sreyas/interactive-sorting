@@ -29,10 +29,22 @@ body {
 
 #generateRandomNumberArray {
     font-family: "Lato", sans-serif;
+    background: #ccc;
+}
+
+#generateRandomNumberArray:hover {
+    color: #ccc;
+    background: black;
 }
 
 #doSortButton {
     font-family: "Lato", sans-serif;
+    background: #ccc;
+}
+
+#doSortButton:hover {
+    color: #ccc;
+    background: black;
 }
 
 .sort-type-wrapper > select {
@@ -42,6 +54,12 @@ body {
 
 #undoSortButton {
     font-family: "Lato", sans-serif;
+    background: #ccc;
+}
+
+#undoSortButton:hover {
+    color: #ccc;
+    background: black;
 }
 
 /* Chart styles */
