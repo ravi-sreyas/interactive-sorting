@@ -3,7 +3,9 @@ var mergeSort = {
   start: function () {
     arrayOfArrays = [JSON.parse(JSON.stringify(elementsToBeSorted))];
     ai = 0;
+    swapHighlighter.isMergeSort = true;
     mergeSortRecursive(elementsToBeSorted, 0, elementsToBeSorted.length);
+    arrayOfArrays.pop();
     return this;
   },
 
@@ -74,6 +76,8 @@ function createArraySnapshotAndPushToArrayOfArrays(resultArray, left, leftIndex,
   var temp = JSON.parse(JSON.stringify(arrayOfArrays[ai]));
   let j = 0;
   var i = 0;
+  swapHighlighter.saveSwapState([leftIL, rightIR-1], JSON.parse(JSON.stringify(temp)));
+
   for (i = leftIL; i < leftIR && j < resultArray.length; i++) {
     temp[i] = resultArray[j++];
   }
@@ -91,5 +95,6 @@ function createArraySnapshotAndPushToArrayOfArrays(resultArray, left, leftIndex,
   }
 
   arrayOfArrays[ai++] = JSON.parse(JSON.stringify(temp));
+  swapHighlighter.saveSwapState([leftIL, rightIR-1], JSON.parse(JSON.stringify(temp)));
   arrayOfArrays[ai] = JSON.parse(JSON.stringify(temp));
 }

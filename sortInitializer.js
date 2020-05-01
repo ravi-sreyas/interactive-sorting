@@ -20,11 +20,7 @@ function initializeSort(algorithmName) {
 }
 
 function displaySortResults(sortAlgorithm) {
-    if (sortAlgorithm === mergeSort) {
-        updateHTMLElementsWithArray(arrayOfArrays, 0, arrayOfArrays.length);
-    } else {
-        swapHighlighter.showSwapping(arrayOfArrays, 0, arrayOfArrays.length, 0);
-    }
+    swapHighlighter.showSwapping(arrayOfArrays, 0, arrayOfArrays.length, 0);
     displayUndoSortButton();
     printBigONotation(sortAlgorithm.createBigONotationDisplayObject());
 }

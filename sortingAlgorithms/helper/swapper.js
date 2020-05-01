@@ -1,6 +1,7 @@
 var swapHighlighter = {
     index: [],
     array: [],
+    isMergeSort: false,
     nonSwappingIndex: [-1, -1],
     arrayStyles: {
         pivot: "background-color: green; color: yellow; border-radius: 40%;",
@@ -14,10 +15,14 @@ var swapHighlighter = {
         goldenrod: "background-color: goldenrod;",
         none: ""
     },
+    generalStyles : {
+        fadeOut: "opacity: 0.5;"
+    },
 
     initializeSwap: function () {
         this.index = []
         this.array = []
+        this.isMergeSort = false;
     },
 
     saveSwapState: function (indexElements, arrayElements) {
@@ -41,6 +46,9 @@ var swapHighlighter = {
             swapHighlighter.addHTMLElementsForDisplayingChart(elementsToDisplay[i], this.nonSwappingIndex);
             i++;
             if (i < total) {
+                if(i === total-1) {
+                    this.isMergeSort = false;   // To avoid fading out of the last state
+                }
                 swapHighlighter.showSwapping(elementsToDisplay, i, total, j);
             }
         }, 3000);
@@ -58,7 +66,7 @@ var swapHighlighter = {
             } else if (i == index[0]) {
                 swapHighlighter.applyStyle.forArray(randomArrayElements, elements[i], this.arrayStyles.salmon);
             } else {
-                swapHighlighter.applyStyle.forArray(randomArrayElements, elements[i], this.arrayStyles.none);
+                this.normalDisplayer.array(randomArrayElements, elements, i, index);
             }
         }
         randomArrayElements.innerHTML = randomArrayElements.innerHTML + "]";
@@ -75,7 +83,7 @@ var swapHighlighter = {
             } else if (i == index[0]) {
                 swapHighlighter.applyStyle.forChart(chartElement, elements[i], this.chartStyles.salmon);
             } else {
-                swapHighlighter.applyStyle.forChart(chartElement, elements[i], this.chartStyles.none);
+                this.normalDisplayer.chart(chartElement, elements, i, index);
             }
         }
     },
@@ -92,6 +100,23 @@ var swapHighlighter = {
                 "style='grid-row-start: " + calculateChartValue(element * barHeightMultiplier) + "; " + styles + "'>" +
                 "<div class='element-on-chart'>" + element + "</div>" + "</div>";
 
+        }
+    },
+
+    normalDisplayer: {
+        chart: function(chartElement, elements, i, index) {
+            if(!swapHighlighter.isMergeSort || (i > index[0] && i < index[1])) {
+                swapHighlighter.applyStyle.forChart(chartElement, elements[i], swapHighlighter.chartStyles.none);
+            } else {
+                swapHighlighter.applyStyle.forChart(chartElement, elements[i], swapHighlighter.chartStyles.none + swapHighlighter.generalStyles.fadeOut);
+            }
+        },
+        array: function(randomArrayElements, elements, i, index) {
+            if(!swapHighlighter.isMergeSort || (i > index[0] && i < index[1])) {
+                swapHighlighter.applyStyle.forArray(randomArrayElements, elements[i], swapHighlighter.chartStyles.none);
+            } else {
+                swapHighlighter.applyStyle.forArray(randomArrayElements, elements[i], swapHighlighter.chartStyles.none + swapHighlighter.generalStyles.fadeOut);
+            }
         }
     }
 }
