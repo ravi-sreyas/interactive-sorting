@@ -1,5 +1,9 @@
 let elementsToBeSorted;
 
+var randomNumberArrayGenerator = {
+    generatedArray: []
+};
+
 function generateRandomNumberArray() {
     const maxValue = generateMaxValue();
     const minValue = generateMinValue();
@@ -8,19 +12,20 @@ function generateRandomNumberArray() {
     doConsoleLog(maxValue, minValue, numberOfElements, barHeightMultiplier);
     addCustomColumnsForGridTemplate(numberOfElements);
 
-    elementsToBeSorted = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
+    randomNumberArrayGenerator.generatedArray = createRandomNumberArray(numberOfElements-2, minValue, maxValue);
+    elementsToBeSorted = JSON.parse(JSON.stringify(randomNumberArrayGenerator.generatedArray));
     displayOnScreen(elementsToBeSorted);
 }
 
 function undoSort() {
-    elementsToBeSorted = JSON.parse(JSON.stringify(elementsToBeSorted));
-    displayOnScreen(elementsToBeSorted);
+    elementsToBeSorted = JSON.parse(JSON.stringify(randomNumberArrayGenerator.generatedArray));
+    displayOnScreen(randomNumberArrayGenerator.generatedArray);
 }
 
-function displayOnScreen(elementsToBeSorted) {
-    doConsoleLog(elementsToBeSorted);
+function displayOnScreen(generatedArray) {
+    doConsoleLog(generatedArray);
     cleanUpScreen();
-    updateHTMLElements(elementsToBeSorted);
+    updateHTMLElements(generatedArray);
     displaySortingRelatedElements();
 }
 
