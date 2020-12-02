@@ -1,5 +1,5 @@
 function doSort() {
-    cleanUpScreen();
+    cleanUpBeforeRunningSort();
     resetGlobalVariables();
     swapHighlighter.initializeSwap();
     let sortAlgorithm = initializeSort(document.getElementById('sortAlgorithmDropDown').value);
@@ -7,6 +7,14 @@ function doSort() {
 }
 
 function cleanUpScreen() {
+    cleanUpBeforeRunningSort();
+    hideDoSortButton();
+    hideSortAlgorithmDropDown();
+    hideDisplayedNumbers();
+    hideDisplayedChart();
+}
+
+function cleanUpBeforeRunningSort() {
     hideUndoSortButton();
     hideBigONotation();
 }

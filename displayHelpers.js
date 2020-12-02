@@ -116,3 +116,20 @@ function hideBigONotation() {
 function hideBigOWrapper() {
     document.getElementById('big-o-text-wrapper').setAttribute("style", "display: none");
 }
+
+function hideDoSortButton() {
+    document.getElementById('doSortButton').setAttribute("style", "display: none");
+}
+
+function hideSortAlgorithmDropDown() {
+    document.getElementById('sortAlgorithmText').setAttribute("style", "display: none");
+    document.getElementById('sortAlgorithmDropDown').setAttribute("style", "display: none");
+}
+
+function hideDisplayedNumbers() {
+    document.getElementById('random-array-elements').innerHTML = "";
+}
+
+function hideDisplayedChart() {
+    document.getElementById('chart').innerHTML = "";
+}
