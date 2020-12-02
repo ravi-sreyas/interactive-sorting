@@ -2,6 +2,13 @@
     display: flex;
 }
 
+.invalid-text > input {
+    background-color: #3f3f3f;
+    border: none;
+    color: red;
+    width: 330px;
+}
+
 #numberOfElements {
     width: 250px;
 }

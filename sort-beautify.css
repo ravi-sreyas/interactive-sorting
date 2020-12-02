@@ -8,9 +8,19 @@ body {
     background-color: #3f3f3f  ;
 }
 
-.user-input-wrapper {
+.input-wrapper {
     justify-content: center;
     margin: 25px;
+}
+
+.user-input-wrapper {
+    justify-content: center;
+}
+
+.invalid-input-wrapper {
+    margin: 5px;
+    justify-content: center;
+    display: flex
 }
 
 .generated-random-number-array-wrapper > div {

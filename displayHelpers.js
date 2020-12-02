@@ -1,3 +1,4 @@
+const errorMessage = "Invalid number. Please enter an integer from 3 to 30."
 const totalRows = 101;
 let barHeightMultiplier = 1;
 
@@ -132,4 +133,14 @@ function hideDisplayedNumbers() {
 
 function hideDisplayedChart() {
     document.getElementById('chart').innerHTML = "";
+}
+
+function showErrorMessageWrapper() {
+    cleanUpScreen();
+    document.getElementById('errorMessage').setAttribute("style", "display: block");
+    document.getElementById('errorMessage').value = errorMessage;
+}
+
+function hideErrorMessageWrapper() {
+    document.getElementById('errorMessage').setAttribute("style", "display: none");
 }

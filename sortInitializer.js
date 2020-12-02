@@ -10,6 +10,7 @@ function cleanUpScreen() {
     cleanUpBeforeRunningSort();
     hideDoSortButton();
     hideSortAlgorithmDropDown();
+    hideErrorMessageWrapper();
     hideDisplayedNumbers();
     hideDisplayedChart();
 }

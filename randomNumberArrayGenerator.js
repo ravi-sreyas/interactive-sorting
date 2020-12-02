@@ -5,9 +5,17 @@ var randomNumberArrayGenerator = {
 };
 
 function generateRandomNumberArray() {
+    const numberOfElements = document.getElementById('numberOfElements').value;
+    if (isValidInput(numberOfElements)) {
+        generate(numberOfElements);
+    } else {
+        showErrorMessageWrapper();
+    }
+}
+
+function generate(numberOfElements) {
     const maxValue = generateMaxValue();
     const minValue = generateMinValue();
-    const numberOfElements = document.getElementById('numberOfElements').value;
     barHeightMultiplier = 100/maxValue;
     doConsoleLog(maxValue, minValue, numberOfElements, barHeightMultiplier);
     addCustomColumnsForGridTemplate(numberOfElements);
@@ -35,6 +43,12 @@ function generateMaxValue() {
 
 function generateMinValue() {
     return getRandomNumberWithin(1, 49);
+}
+
+function isValidInput(number) {
+    return number >= 3 &&
+       number <= 30 &&
+       Number.isInteger(Number(number));
 }
 
 function createRandomNumberArray(numberOfElements, minValue, maxValue) {

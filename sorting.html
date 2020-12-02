@@ -12,13 +12,21 @@
 
 <body>
     <div class="container">
-        <div class="user-input-wrapper">
-            <div class="input-text-wrapper">
-                <input type="number" id="numberOfElements" placeholder="Enter desired number of elements" />
+        <div class="input-wrapper">
+            <div class="user-input-wrapper">
+                <div class="input-text-wrapper">
+                    <input type="number" min="3" max="30" id="numberOfElements" placeholder="Enter desired number of elements" />
+                </div>
+                <div class="submit-button-wrapper">
+                    <button type="button" id="generateRandomNumberArray"
+                        onclick="generateRandomNumberArray()">Generate!</button>
+                </div>
             </div>
-            <div class="submit-button-wrapper">
-                <button type="button" id="generateRandomNumberArray"
-                    onclick="generateRandomNumberArray()">Generate!</button>
+
+            <div class="invalid-input-wrapper">
+                <div class="invalid-text">
+                    <input type="text" id="errorMessage" readonly />
+                </div>
             </div>
         </div>
 
