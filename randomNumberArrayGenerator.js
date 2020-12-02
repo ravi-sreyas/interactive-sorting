@@ -28,6 +28,7 @@ function generate(numberOfElements) {
 function undoSort() {
     elementsToBeSorted = JSON.parse(JSON.stringify(randomNumberArrayGenerator.generatedArray));
     displayOnScreen(randomNumberArrayGenerator.generatedArray);
+    cleanUpBeforeRunningSort();
 }
 
 function displayOnScreen(generatedArray) {
